@@ -1,0 +1,41 @@
+python  -m cProfile -o output.file test-combined-recon.py
+import pstats
+p = pstats.Stats("output.txt")
+p.strip_dirs().sort_stats(-1).print_stats()
+
+profiling test-combined-recon-batch with different batch sizes
+
+batch=100
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    1.918    1.918   13.067   13.067 test-combined-recon-batch-multi.py:1(<module>)
+        1    0.001    0.001    0.002    0.002 test-combined-recon-batch-multi.py:31(get_true_patches)
+     1600    1.111    0.001    1.111    0.001 test-combined-recon-batch-multi.py:39(scale_data)
+        1    0.022    0.022    2.277    2.277 test-combined-recon-batch-multi.py:49(get_data)
+     1600    0.280    0.000    3.190    0.002 test-combined-recon-batch-multi.py:72(register_trans)
+        1    0.000    0.000    0.001    0.001 test-combined-recon-batch-multi.py:97(<listcomp>)
+
+batch = 20
+        1    2.420    2.420   27.613   27.613 test-combined-recon-batch-multi.py:1(<module>)
+        1    0.001    0.001    0.002    0.002 test-combined-recon-batch-multi.py:31(get_true_patches)
+     8000    1.327    0.000    1.327    0.000 test-combined-recon-batch-multi.py:39(scale_data)
+        1    0.070    0.070    2.867    2.867 test-combined-recon-batch-multi.py:49(get_data)
+     8000    1.366    0.000   13.666    0.002 test-combined-recon-batch-multi.py:72(register_trans)
+        1    0.000    0.000    0.001    0.001 test-combined-recon-batch-multi.py:97(<listcomp>)
+
+batch = 5
+        1    3.477    3.477   73.034   73.034 test-combined-recon-batch-multi.py:1(<module>)
+        1    0.001    0.001    0.002    0.002 test-combined-recon-batch-multi.py:31(get_true_patches)
+    32000    1.925    0.000    1.925    0.000 test-combined-recon-batch-multi.py:39(scale_data)
+        1    0.331    0.331    4.698    4.698 test-combined-recon-batch-multi.py:49(get_data)
+    32000    5.153    0.000   49.961    0.002 test-combined-recon-batch-multi.py:72(register_trans)
+        1    0.000    0.000    0.001    0.001 test-combined-recon-batch-multi.py:97(<listcomp>)
+
+batch = 1
+        1    9.076    9.076  362.450  362.450 test-combined-recon-batch-multi.py:1(<module>)
+        1    0.001    0.001    0.002    0.002 test-combined-recon-batch-multi.py:31(get_true_patches)
+   160000    3.043    0.000    3.043    0.000 test-combined-recon-batch-multi.py:39(scale_data)
+        1    1.720    1.720   12.480   12.480 test-combined-recon-batch-multi.py:49(get_data)
+   160000   28.726    0.000  274.118    0.002 test-combined-recon-batch-multi.py:72(register_trans)
+        1    0.000    0.000    0.000    0.000 test-combined-recon-batch-multi.py:97(<listcomp>)
+
