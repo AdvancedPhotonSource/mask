@@ -1,0 +1,9 @@
+.idea
+
+# build
+build/
+dist/
+
+# generated files
+tests/data/
+tests/recon
