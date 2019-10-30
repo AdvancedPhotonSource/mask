@@ -16,7 +16,7 @@ BATCHSIZE = 100
 NUMGPUS = 2
 
 # Define 2D mask
-maskl = tf.imread('/local/bfrosik/Mask/tests/core/mask-256.tiff', out='memmap').copy()
+maskl = tf.imread('tests/core/mask-256.tiff', out='memmap').copy()
 maskl = np.squeeze(maskl)
 print ('mask shape', maskl.shape)
 
@@ -55,7 +55,7 @@ def register_trans(src_freq, target_image, midpoints, gpu):
 
 
 def get_true_patches():
-    truepatch = tf.imread('/local/bfrosik/Mask/tests/data/true-patches/all_patches.tiff').copy()
+    truepatch = tf.imread('tests/data/true-patches/all_patches.tiff').copy()
     print ('trupatches shape', truepatch.shape)
     truepatch[truepatch == 1] = -1
     truepatch[truepatch == 0] = 1
@@ -74,7 +74,7 @@ def scale_data(data, n):
 
 def get_data():
     # get all_data
-    all_data = tf.imread('/local/bfrosik/Mask/tests/data/all/all_frames.tiff')
+    all_data = tf.imread('tests/data/all/all_frames.tiff')
     print ('all data size', all_data.shape)
 
     # divide the data into batches, and store it in a list of tuples
